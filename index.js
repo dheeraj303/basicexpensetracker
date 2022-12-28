@@ -8,7 +8,7 @@ function adddata(e){
 var desc=document.getElementById('desc').value;
 var type=document.getElementById('type').value;
     e.preventDefault();
-   alert(id);
+//    alert(id);
    
     if(amount!=0 && desc!='' &&type!=''){
         console.log(`${amount} ${desc} ${type}`);
@@ -27,14 +27,14 @@ var type=document.getElementById('type').value;
        }
         // let obj =new Obj(`${amount}, ${desc}, ${type}`);
             if(id==''){
-            axios.post('https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData',obj1)
+            axios.post('https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData',obj1)
             .then((response)=>{
                 viewuser(response.data);
             })
             .catch(err=>console.log(err));
         }else{
           
-                axios.put(`https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData/${id}`,obj1)
+                axios.put(`https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData/${id}`,obj1)
                 .then((response)=>{
                    getuserbyid(id);
                 })
@@ -53,15 +53,15 @@ var type=document.getElementById('type').value;
 window.addEventListener('DOMContentLoaded',getuser);
 
 function getuserbyid(id){
-    axios.get(`https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData/${id}`)
+    axios.get(`https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData/${id}`)
     .then((response)=>{
-        console.log(response);
+        // console.log(response);
         viewuser(response.data);
     })
     .catch(err=>console.log(err));
 }
 function getuser(){
-    axios.get('https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData')
+    axios.get('https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData')
     .then((response)=>{
         console.log(response);
         // let nextValue;
@@ -91,7 +91,7 @@ function editexpense(amount){
 //    let detail= localStorage.getItem(amount);
 //    let data=JSON.parse(detail);
 //    console.log(data);
-axios.get(`https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData/${amount}`)
+axios.get(`https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData/${amount}`)
 .then((response)=>{
     document.getElementById('id').value=response.data._id;
     document.getElementById('amount').value=response.data.amount;
@@ -119,7 +119,7 @@ function viewuser(data){
 
 function deleteexpense(amount){
         // localStorage.removeItem(amount);
-        axios.delete(`https://crudcrud.com/api/9458c0e189c04e92957de6fb1aaed494/appointmentData/${amount}`)
+        axios.delete(`https://crudcrud.com/api/bb7db892c3bf445c8ebedd11d077d9ea/appointmentData/${amount}`)
         .then((response)=>{
             deletefromlist(amount);
         })
